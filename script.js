@@ -29,7 +29,7 @@ console.log(random);
 let me = {
     name: "Celine Fatima",
     surname: "Emanuele",
-    age: 20
+    age: 20,
 };
 console.log(me)
 
