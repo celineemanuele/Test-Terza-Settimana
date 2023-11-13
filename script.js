@@ -119,9 +119,22 @@ function onlyLetters(str){
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
-function isThisAnEmail(str1){
-
+function isThisAnEmail(str) {
+  arrMail = str.split("@");
+  console.log(arrMail);
+  if (arrMail[0] && arrMail[1]) {
+    if (arrMail[0] && arrMail[1].includes(".")) {
+      let dominio = arrMail[1].split(".");
+      if (dominio[dominio.length - 1].length > 1) {
+        return true;
+      }
+    }
+    return false;
+  } else {
+    return false;
+  }
 }
+console.log(isThisAnEmail)
 
 
 /* ESERCIZIO 7
@@ -147,9 +160,21 @@ console.log(whatDayIsIt(''));
       values: [3, 3, 4]
   }
 */
-function rollTheDices(num1){
-    
+function rollTheDices(n){
+  let obj = {
+    sum: 0,
+    values: []
+  }
+
+  for(let i = 0; i < n; i++){
+    let num = dice();
+    obj.sum += num;
+    obj.values.push(num);
+  }
+  return obj;
 }
+
+console.log(rollTheDices(6));
 
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
@@ -171,6 +196,20 @@ console.log(daysPassed);
 /* ESERCIZIO 10
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
+let isTodayMyBirthday = () => {
+  let now = new Date();
+  let month = now.getMonth() + 1;
+  let day = now.getDate();
+  if(month === 1 && day === 13){
+    return true;
+  } else {
+    return false;
+  };
+}
+const myBirthday = '24/08'; 
+const isItMyBirthday = isTodayMyBirthday(myBirthday);
+
+console.log(isItMyBirthday);
 
 
 // Arrays & Oggetti
@@ -324,17 +363,17 @@ function nuovoElemento() {
     ul.appendChild(listItem)
     console.log(listItem);
   }
-  nuovoElemento()
+  nuovoElemento();
+
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList". rimuovere tutti i nodi
 */
-function svuotaLista() {
-    const myList = document.getElementById('myList');
-    li.remove
-    }
+let removeli = () => {
+  let lista = document.querySelector('ul#myList')
+  lista.remove('li')
+};
+removeli();
 
-
-svuotaLista();
 
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
@@ -371,7 +410,7 @@ function halfTree(n){
       console.log(str)
     }
   }
-  halfTree(3)
+  halfTree(3);
 
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
@@ -396,7 +435,7 @@ function tree(num){
       console.log(albero)
     }
   }
-  tree(4)
+  tree(3);
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
